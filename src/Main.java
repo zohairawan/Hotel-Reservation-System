@@ -21,7 +21,7 @@ public class Main {
         // Reads data from music file
         Properties props = new Properties();
         try {
-            props.load(Files.newInputStream(Path.of("hotel.properties"), StandardOpenOption.READ));
+            props.load(Files.newInputStream(Path.of("src/hotel.properties"), StandardOpenOption.READ));
         } catch(IOException e) {
             throw new RuntimeException(e);
         }
@@ -32,7 +32,7 @@ public class Main {
         dataSource.setDatabaseName(props.getProperty("databaseName"));
 
         // SQL Query
-        String query = "SELECT * FROM TABLENAME";
+        String query = "SELECT * FROM reservations";
 
         try(var connection = dataSource.getConnection(
                 props.getProperty("user"),
